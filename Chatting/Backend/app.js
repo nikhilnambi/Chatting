@@ -213,9 +213,8 @@ app.get('/checkauth',verifyToken,(req,res,err)=>{
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user:"verifyotpemail3@gmail.com",
-    // pass:"fiuhpzbtubdnfly"
-    pass:"otufslqmrsirkhpk"
+    user:"",
+    pass:""
   }
 });
 
