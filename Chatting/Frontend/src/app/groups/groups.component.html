@@ -1,0 +1,93 @@
+<app-userheader></app-userheader>
+<app-profileheader></app-profileheader>
+<br>
+
+<div class="container mass">
+
+<button class="btn btn-primary" type="button"  style="margin-left:20px;background-color:rgb(135, 238, 76)"
+ data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">New Group</button><br><br>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">Create a Group</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+   
+    <form (ngSubmit)="createGroup()" #group='ngForm' [formGroup]="regForm">
+       <br>
+        <label for="chk" aria-hidden="true" >Group Name</label><br>
+        <input type="text"  class="input form-control" formControlName='name' name="name" placeholder="enter group name"  required><br>
+    <!-- <p>Enter Group Name</p><br> -->
+    <!-- <input type="text"><br><br> -->
+    <!-- <div *ngIf="loading" class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div> -->
+    <!-- <div class="con">
+    <div class="container">
+        <div class="iterate" *ngFor="let user of people"> 
+            <div class="row"><input type="checkbox"><span (click)="addmember()">
+                <div class="col image">
+                    <img class="img-responsive" [src]="user.image==getuserimage()?'':user.image">
+                </div>
+                <div class="col data">
+                    <h5 style="font-size:small;">{{user.name==getName()?'':user.name}}</h5>
+                    <h6 class="text-muted" style="font-size:smaller" id="username">{{user.username==getusername()?'':user.username}}</h6>
+                </div>
+                
+                <div class="col">
+        
+                </div>
+            </span>
+              </div>
+            </div>
+    </div>
+  </div> -->
+  <button class="btn" [disabled]='group.form.invalid && regForm.invalid' style="background-color:rgb(159, 245, 109)">Create Group</button>
+  </form>
+  <br>
+  <div *ngIf="successmessage" class="alert alert-success">{{successmessage}}</div>
+  <div *ngIf="errormessage" class="alert alert-danger">{{errormessage}}</div>
+</div>
+
+</div>
+
+<br>
+
+<div class="container">
+    <div class="iterate" *ngFor="let data of groupodd">
+    <div class="row">
+        <div class="col">
+            <img class="img-responsive" src="http://localhost:3200/{{data.image}}">
+        </div>
+        <div class="col data">
+            <h5 style="font-size:medium;">{{data.gpname}}</h5>
+        </div>
+        <div class="col">
+            <span  class="chat-list-name" (click)="go(data)" style="margin-left: 10px;"><i class="far fa-comment"style="font-size:20px;color:#31C331"></i></span>
+        </div> 
+      </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="iterate" *ngFor="let data of groupeven">
+        <div class="row"> 
+            <div class="col">
+                <img class="img-responsive" src="http://localhost:3200/{{data.image}}">
+            </div>
+            <div class="col data">
+                <h5 style="font-size:medium;">{{data.gpname}}</h5>
+            </div>
+            <div class="col">
+                <!-- <button type="" class="btn btn-primary">Join</button> -->
+                <span (click)="joinGroup(data.gpname)"   class="chat-list-name" data-toggle="tooltip" data-placement="right" title="Join" style="margin-left: 10px;"><i class="fa fa-users" style="font-size:20px;color:#31C331"></i></span>
+                <!-- <span  class="chat-list-name"  style="margin-left: 10px;"><i class="far fa-comment"style="font-size:20px;color:#31C331"></i></span> -->
+            </div> 
+          </div>
+        </div>
+        </div>
+
+      </div>
+

@@ -1,0 +1,44 @@
+<app-userheader></app-userheader>
+
+<div class="container">
+    <div class="one">
+        <div class="icon"><img [src]="dp()" *ngIf="!previewsrc" class="card-img-top" alt="...">
+          <img id="preview" [src]="previewsrc" class="card-img-top" *ngIf="previewsrc" alt="your image">
+          <a  *ngIf="previewsrc" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"><i class="fa fa-upload" *ngIf="show" (click)="onSubmit()" style='font-size:20px;color: rgb(49, 195, 49);'></i>
+            <i class="fa fa-camera" *ngIf="!show" style='font-size:27px;color: rgb(49, 195, 49);' ></i>
+          </a> 
+          <a *ngIf="!previewsrc" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom"><i class="fa fa-camera" style='font-size:27px;color: rgb(49, 195, 49);' ></i></a>          </div>
+
+          <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasBottomLabel">Profile Photo</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" id="dismiss"aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              
+              <button class="btn btn-primary" type="input"  (click)="openFile()"><i class='far fa-image' style='color:rgb(100, 218, 31)'></i>Gallery
+                <input type="file" style="display:none" accept="image/*" id="inputchange" (change)="handle($event)">
+            </button>
+           
+            
+              <button class="btn btn-primary" (click)="remove()" style="margin-left:50px;"><i class='fas fa-trash-alt'  style='color:rgb(100, 218, 31)'></i>Remove</button>
+            </div>
+          </div>
+        </div>
+       
+       
+
+      <div class="two">
+
+         <div class="word"><i class="fas fa-user-alt" style="color:rgb(182, 253, 179)"><h6 class="text-muted ">Name</h6></i></div>
+        <input class="form-control" type="text" value="{{name()}}"  readonly autocomplete="off"><br>
+        <div class="word"><i class="fas fa-at" style="color:rgb(182, 253, 179)"><h6 class="text-muted ">Username</h6></i></div>
+        <input class="form-control" type="text" value="{{username()}}"  readonly autocomplete="off"><br>
+        <div class="word"><i class="fas fa-envelope" style="color:rgb(182, 253, 179)"><h6 class="text-muted ">Email Id</h6></i></div>
+        <input class="form-control" type="text" value="{{email()}}"  readonly autocomplete="off">
+        <br>
+        <p style="text-align:center ;">Joined on <em>{{joined()}}</em></p>
+       
+        </div>
+    
+</div>

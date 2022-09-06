@@ -1,0 +1,31 @@
+.container img {
+    float: left;
+    max-width: 55px;
+    max-height:55px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  a{
+    text-decoration: none;
+    
+  }
+  p{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:170px;
+    overflow:hidden;
+  }
+  .row{
+    padding:10px;
+  }
+  .mass{
+    padding-top:21px;
+
+  }
+  /* .time{
+    display: flex;
+    white-space: nowrap;
+  } */
+  
+  

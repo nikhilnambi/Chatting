@@ -1,0 +1,180 @@
+<app-header></app-header>
+
+
+<div *ngIf="!responsemessage" class="card">
+<div class="card-text">
+<h3 style="text-align:center ;">Sign up</h3></div>
+<div class="card-body">
+<div class="two container">
+<div class="row">
+
+<div class="image col">
+  <img class="img-fluid" src="https://left-nav.blogs.hopkinsmedicine.org/files/2016/11/connecting-people.jpg">
+</div>
+
+<div class="signup col">
+
+
+
+<form #usersignup="ngForm" (ngSubmit)="UserSignup()" class="row g-3 display">
+  <div class=" col-md-4 form-group">
+    <label>Name</label>
+    <input class="form-control " type="text" [class.is-invalid]="name.invalid && name.touched" placeholder="Name" pattern="[A-Za-z]{3,20}" name="name" required  [(ngModel)]="user.name"
+     #name="ngModel" autocomplete="off" >
+
+     <div *ngIf="name.invalid && (name.dirty || name.touched || name.errors)">
+    <small class="text-danger" *ngIf="name.errors?.['pattern']">Only alphabets allowed</small>
+   <!-- <small class="text-danger" *ngIf="name.errors?.['minlength']">
+     Name must be at least 4 characters long.
+   </small> -->
+
+    </div>
+
+  <div  *ngIf="name.valid">
+    <!-- <small class="text-success">Looks Good!</small> -->
+  </div>
+  </div>
+
+
+  <div class="col-md-4">
+    <label>Username</label>
+    
+    <div class="input-group has-validation username">
+     
+      <span  class="input-group-text" id="inputGroupPrepend3">@</span>
+      <input type="text" class="form-control" (keyup)="UsernameCheck($event)" name="username" [(ngModel)]="user.username"
+        pattern="^[a-z0-9]{4,8}" id="username" [class.is-invalid]="username.invalid && username.touched" #username="ngModel" autocomplete="off" required>
+      <!-- <div id="validationServerUsernameFeedback" class="invalid-feedback">
+        Please choose a username.
+      </div> -->
+    </div>
+  
+
+    <div *ngIf="username.errors && (username.invalid || username.touched)">
+      <small class="text-danger" *ngIf="username.errors?.['pattern']">
+      <li>
+        Username can be lowercase alphabets or combination of lowercase & numbers
+      </li>
+      <li>
+        username should atleast have 4 letters
+      </li>
+    </small>
+    
+    
+    
+    </div>
+    <div *ngIf="errormessage">
+      <small id="errormessage"  class="text-danger">username not available</small>
+    </div>
+    <div *ngIf="username.valid && !errormessage">
+      <small class="text-success">username available<i class="fa fa-check" aria-hidden="true"></i></small>
+    </div>
+   
+    
+  </div>
+
+  
+  <div class="form-group col-md-4">
+    <label>Email Id</label>
+    <input class="form-control" id="email" (keyup)="useremail($event)" type="email" placeholder="Email" required name="email"
+    [(ngModel)]="user.email" 	pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,4}$"  [class.is-invalid]="email.invalid && email.touched" #email="ngModel" autocomplete="off">
+    
+    <div *ngIf="email.errors  && (email.invalid || email.touched)">
+      <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter valid email id</small>
+    </div>
+    <div  *ngIf="useremailmessage">
+      <small id="useremailmessage" class="text-danger">{{useremailmessage}}</small>
+    </div>
+    
+    <div  *ngIf="email.valid && !useremailmessage">
+      <small *ngIf="emailverified " class="text-success">{{emailverified}}<i class="fa fa-check" aria-hidden="true"></i></small><br>
+    <button *ngIf="!otp " type="button" id="otpbtn" (click)="otpverify(email.value)" class="btn btn-secondary float-end">Verify Email</button>
+     
+    <div *ngIf="otp && !emailverified" class="verification-code">
+      <label>Enter the otp send to the Email</label><br>
+      
+      
+      <ng-otp-input (onInputChange)="onOtpChange($event)"   [config]="{length:4}"></ng-otp-input>
+      <p *ngIf="otpmessage" class="text-danger">{{otpmessage}}</p>
+    </div>
+    </div>
+    
+  </div>
+
+  <div class="form-group col-md-4">
+    <label>Password</label>
+   <div class="input-group">
+    <input class="form-control" [type]=" showPassword ? 'text':'password'" required name="password"
+    [(ngModel)]="user.password"  	pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,12}$"  [class.is-invalid]="password.invalid && password.touched" #password="ngModel" autocomplete="off">
+    <span class="input-group-text" id="inputGroupPrepend3" (click)="showPassword = !showPassword">{{showPassword ? '' : ''}}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+      <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+      <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+    </svg></span>
+    
+  </div>
+  
+    <div *ngIf="password.errors && (password.invalid || password.touched)">
+      <small class="text-danger" *ngIf="password.errors?.['pattern']">
+        <li>Password should contains lowercase,uppercase,numbers & other special characters</li>
+        <li>Password should contain atleast 6 Letters</li>
+      </small>
+    </div>
+    
+    <div  *ngIf="password.valid">
+      <small class="text-success">Looks Good<i class="fa fa-check" aria-hidden="true"></i></small>
+    </div>
+  </div>
+<br>
+  
+  <div class="col-12 ">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" (change)="checkbox($event)" value="" name="checkbox" id="check" aria-describedby="invalidCheck3Feedback">
+      <label class="form-check-label" for="invalidCheck3">
+       <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Agree to terms and conditions</a>
+       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Terms & Conditions</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+           <ol>
+            <li>We will collect only basic information of user.</li>
+            <li>You may not upload viruses or malicious code that repair our product.</li>
+            <li>We will ensure user privacy.</li>
+            <li>Any Malicious acitivites will lead to account termination</li>
+           </ol>
+          </div>
+        </div>
+        </div>
+      </label>
+      
+      
+    </div>
+    <div *ngIf="!checkboxticked">
+      <small>You must agree before submitting.</small>
+    </div>
+  </div>
+  <div class="col-12 bt">
+    <!-- <button class="btn btn-primary" [disabled]="usersignup.invalid || errormessage || useremailmessage || !checkboxticked "  type="submit">Sign Up </button> -->
+  
+    <button class="btn" style="background-color:rgb(49, 195, 49)" type="submit"  [disabled]="usersignup.invalid || errormessage || useremailmessage || !checkboxticked || !otp  || (otp && !emailverified)">
+      <span *ngIf="loading"  class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Sign Up
+    </button>
+  </div>
+  <div class="col-12">
+    <p>Already have Account? <a [routerLink]="['/login']">Login</a></p>
+   
+  </div>
+</form>
+<br>
+<div *ngIf="errorresponse" class="alert alert-success">{{errorresponse}}</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="response">
+<div *ngIf="responsemessage" class="alert alert-info" role="alert"><p id="res">{{responsemessage}}</p></div>
+</div>

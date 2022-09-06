@@ -1,0 +1,42 @@
+header{
+    position: relative;
+    background:#31C331;
+    width:100%;
+    /* padding: 0; */
+    /* border-bottom: 1px solid rgb(49, 195, 49); */
+   }
+   
+  
+  a{
+    color: whitesmoke;
+    text-decoration: none;
+    font-size:medium;
+  }
+  
+  a:hover{
+    background:rgb(89, 236, 175);
+    color: white;
+    cursor: pointer;
+    /* border-radius: 50%; */
+  }
+  
+  .container{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  
+
+  
+  ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  ul a{
+    padding: 1rem;
+    display: inline-block;
+  }
+ 

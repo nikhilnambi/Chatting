@@ -1,0 +1,64 @@
+.container{
+    padding-top: 30px;
+}
+img{
+    border-radius: 50%;
+    max-width: 130px;
+    max-height:130px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.one{
+    display: grid;
+}
+.two{
+   
+    padding-left:20px;
+}
+li{
+    list-style: none;
+    display: inline;
+}
+
+.icon{
+   display:flex;
+   margin-left: auto;
+   margin-right: auto;
+   width:200px;
+   height:200px;
+}
+.fa{
+    padding-top:100px;
+    margin-left:-50px;
+}
+li{
+    display:flex;
+}
+.word{
+    display:flex;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+input{
+    border-color: rgb(121, 248, 203); 
+}
+
+input.form-control:read-only {
+    background-color:whitesmoke;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -1,0 +1,33 @@
+<app-userheader></app-userheader>
+<br>
+
+<br>
+  <div *ngIf="errormessage" class="alert alert-info">
+    <p style="padding-left:10px ; padding-right:10px">{{errormessage}}</p>
+  </div>
+<div  *ngIf="!errormessage" class="container">
+  <div  *ngFor="let user of people">
+ <div class="two">
+  <div class="wrapper">
+  <img src="https://1.bp.blogspot.com/-Muc21xaQjYg/XluhYO6f6vI/AAAAAAAAPJw/T51WnNCctz4Vxn_9REzJuftkznfuRGKUgCLcBGAsYHQ/s1600/whatsapp%2Bprofile%2Bpic%2B%25281%2529.jpg"
+   class="img-cover" alt="Dp">
+  </div>
+  <div class="texts">
+    <h4>{{user.name}}</h4>
+    <h6 class="text-muted">@{{user.username}}</h6>
+
+    <div class="but">
+      <!-- <button type="button" class="btn btn-primary">Add to Friend &nbsp;<i class="fa fa-user" aria-hidden="true"></i><span>&#43;</span></button><br> -->
+      <button type="button" class="btn btn-primary">Message &nbsp;<i class="far fa-comment"></i></button>
+    </div>
+
+    <img [src]="LinkImg()">
+  </div>
+  </div>
+  </div>
+ </div>
+
+
+
+      
+ 

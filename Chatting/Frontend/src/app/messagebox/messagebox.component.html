@@ -1,0 +1,54 @@
+<app-userheader></app-userheader>
+<app-profileheader></app-profileheader>
+
+
+  <div class="container">
+        <div class="row">
+          <div class="col">
+            <img [src]="user.toImage">
+          <h6>{{user.to == getuserName()?user.from:user.to}}</h6>
+          
+         
+        </div>
+        <div class="col col-lg-2">
+          <button class="btn"><i class="fa fa-ban" style="color:lightgreen"></i>Block</button>
+        </div>
+
+        <div class="col col-lg-2">
+          <button class="btn" id="second"><i class="fas fa-volume-mute" style="color:lightgreen"></i>Mute</button>
+        </div>
+        </div>
+       <br>
+    <div class="container">
+      <div class="row mg">
+      {{data.text}}
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row float-end mgbox">
+       Hii how are you
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <form #userchat="ngForm" (ngSubmit)="sendMsg()">
+      <input type="text" name="name" required  [(ngModel)]="data.text" #name="ngModel" >
+      <button type="submit">send</button>
+    </form>
+    </div>
+
+    <!-- <div class="chat-messages">
+      <div class="chat-messages-show-container">
+        <ul class="chat-messages-show-list" id="message-list"></ul>
+      </div>
+    
+    <div class="chat-messages-create-container">
+        <input class="chat-messages-create-input" type="text" [(ngModel)]="data.text">
+        <button class="chat-messages-create-button" (click)="sendMsg()">
+          send
+        </button>
+    </div>
+  </div>
+  </div>  -->
+ 

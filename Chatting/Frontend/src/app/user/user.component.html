@@ -1,0 +1,36 @@
+<app-userheader></app-userheader>
+<app-profileheader></app-profileheader>
+<br>
+
+<div class="container">
+    <div class="iterate" *ngFor="let data of User">
+    <div class="row">
+        <div class="col image">
+            <!-- {{user.to == getuserName()?user.from:user.to}} -->
+            <img class="img-responsive" src="http://localhost:3200/{{data.image}}">
+        </div>
+        <div class="col data">
+            <h5 style="font-size:medium;">{{data.name}}</h5>
+            <h6 class="text-muted" style="font-size:medium" id="username">@{{data.username}}</h6>
+            <!-- <small class="statuson">{{data.status=='online'?'':data.status}}</small>
+            <small class="statusoff">{{data.status=='offline'?'':data.status}}</small> -->
+        </div>
+        
+        <div class="col">
+            <span (click)="chatUser(data)"  class="chat-list-name" style="margin-left: 10px;"><i class="far fa-comment"style="font-size:20px;color:#31C331"></i></span>
+           <!-- <a [routerLink]="['/message']"   ><i class="far fa-comment" style="font-size:20px;color:#31C331"></i></a> -->
+           <!-- <span (click)="Chat(User)"><i class="far fa-comment"style="font-size:20px;color:#31C331"></i></span> -->
+
+        </div>
+    
+      </div>
+    </div>
+    </div>
+
+ 
+
+ <div class="people">
+
+ </div>
+ 
+

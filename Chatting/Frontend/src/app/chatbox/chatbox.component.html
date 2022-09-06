@@ -1,0 +1,120 @@
+
+<app-userheader></app-userheader>
+<app-profileheader></app-profileheader>
+
+<div *ngIf="previewsrc" class="previewsrc">
+  <img id="preview" [src]="previewsrc" class="card-img-top img-responsive" *ngIf="previewsrc" alt="your image">
+  <button type="submit" id="previewbtn" (click)="sendimg()" class="btn" style="background-color:#f8f8f8 ;"><i class="fa fa-arrow-circle-right" style="color: #31C331 ;"></i></button>
+</div>
+
+  <div class="container main" *ngIf="!previewsrc">
+    <div class=" stuck">
+        <div class="row ">
+          <div class="col">
+            <img src="http://localhost:3200/{{user.image}}">
+          <h6>{{user.username}}</h6>
+          <small>{{user.status}}</small>
+        </div>
+        <div class="col col-lg-2">
+          <button class="btn" (click)="blockUser()" *ngIf="this.blocked==null"><i class="fa fa-ban" style="color:lightgreen"></i>Block</button>
+          <button class="btn" (click)="unblockUser()" *ngIf="this.blocked!=null"><i class="fa fa-ban" style="color:lightgreen"></i>Unblock</button>
+        </div>
+
+        <div class="col col-lg-2" *ngIf="mute!='null'">
+          <button class="btn" id="second" (click)="muteUser()" *ngIf="mute=='unmuted'"><i class="fas fa-volume-mute" style="color:lightgreen"></i>Mute</button>
+          <button class="btn" id="second"  (click)="unmuteUser()" *ngIf="mute=='muted'"><i class="fas fa-volume-mute" style="color:lightgreen"></i>Unmute</button>
+        </div>
+        </div>
+    </div>
+       <br>
+    <div  *ngFor="let chat of messageArray">
+      <div class="msgto">
+      <div class="row mgbox" *ngIf="username()!=chat.from">
+        <div class="" *ngIf="chat.message!=null">{{chat.message}}
+          <span (click)="ShareMessage(chat.message)"><i class="fa fa-share" style="color:#33C331"></i></span>
+        </div>
+       <small *ngIf="chat.message!=null">{{chat.time}}</small>
+       <div class="" *ngIf="chat.image!=null">
+        <img *ngIf="chat.image!=null" id="chatimg" src="http://localhost:3200/{{chat.image}}">
+        <!-- <span (click)="ShareMessage(chat.message)"><i class="fa fa-share" style="color:#33C331"></i></span> -->
+       </div>
+      <small *ngIf="chat.image!=null">{{chat.time}}</small>
+      </div>
+      
+    <!-- </div> -->
+
+    <div class="msgtox">
+      <div class="row float-end mgbox" *ngIf="username()==chat.from">
+       <div class="" *ngIf="chat.message!=null">{{chat.message}}
+        <span (click)="ShareMessage(chat.message)"><i class="fa fa-share" style="color:#33C331"></i></span>
+       </div>
+      <small *ngIf="chat.message!=null">{{chat.time}}</small>
+      <div class="" *ngIf="chat.message==null">
+        <img  *ngIf="chat.message==null"  id="chatimg" src="http://localhost:3200/{{chat.image}}">
+        <!-- <span (click)="ShareMessage(chat.message)"><i class="fa fa-share" style="color:#33C331"></i></span> -->
+       </div>
+      <small *ngIf="chat.message==null">{{chat.time}}</small>
+      
+      </div>
+      
+    </div>
+    </div>
+  </div>
+  <p  *ngIf="this.blocked!=null" class="text-muted" style="text-align:center;font-size: smaller;"> You blocked this contact.</p><br>
+  <!-- <p *ngIf="unblockeddiv" class="text-muted" style="text-align:center;font-size: smaller;"> You unblocked this contact</p> -->
+</div>
+    <br><br>
+    <div class="container tox">
+      <form #userchat="ngForm" (ngSubmit)="sendMsg()">
+      <div class="input">
+      <!-- <div class="inputcombo"> -->
+        <button class="btn btn-primary" type="input" id="imgbtn" (click)="openFile()"><i class='far fa-image' style='color:rgb(100, 218, 31)'></i>
+          <input type="file" style="display:none" name="image" class="form-control" [(ngModel)]="image" #name="ngModel" accept="image/*" id="imgupload" (change)="handleimg($event)">
+      </button>
+
+     
+      
+      <input type="text" name="name" class="form-control" required   [(ngModel)]="data.text" #name="ngModel" >
+     <!-- </div> -->
+     
+      <button type="submit" class="btn" style="background-color:#f8f8f8 ;"><i class="fa fa-arrow-circle-right" style="color: #31C331 ;"></i></button>
+      </div>
+    </form>
+    </div>
+    
+   <!--  -->
+  
+   <button type="button" class="btn btn-primary" id="modalbtn" hidden data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Recent Chats</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container mass">
+            <div class="iterate" *ngFor="let data of chatrecord">
+            <div class="row iter" *ngIf="data.room!=data.room2">
+                <div class="col image">
+                    <img class="img-responsive"
+                     src="http://localhost:3200/{{data.toImage==getimage()?data.fromImage:data.toImage}}">
+                </div>
+                <div class="col data">
+                    <h5 style="font-size:medium;">{{data.to==getusername()?data.from:data.to}}</h5>
+                </div>
+                <div class="col">
+                 <button type="submit" *ngIf="data.room!=data.room2" (click)="ShareMsgtoChat(data)" class="btn" style="background-color:#f8f8f8 ;"><i class="fa fa-arrow-circle-right" style="color: #31C331 ;"></i></button>
+              </div>
+              </div>
+            
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+

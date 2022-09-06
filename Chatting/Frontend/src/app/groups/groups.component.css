@@ -1,0 +1,59 @@
+
+  /* .offcanvas.show {
+    -webkit-transition-delay: 3s;
+    transition-delay: 3s;
+    visibility: visible;
+} */
+
+/* .row{
+    padding-left:2px;
+    padding-right:2px;
+} */
+
+/* span:active{
+ background-color: aqua;
+} */
+/* input[type="checkbox"] + span :hover{
+    border: 1px solid red;
+    color:red;
+}
+input[type="checkbox"]:checked + span {
+    border: 1px solid red;
+    color:red;
+}
+
+input[type="checkbox"]{
+    visibility: hidden;
+}
+
+span{
+    display:inline-block;
+} */
+
+
+.offcanvas{
+    height:30%;
+}
+
+img{
+    margin-top:-10px;
+    border-radius: 50%;
+    max-width: 60px;
+    max-height:60px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    padding-top:10px;
+    margin-left:10%;
+}
+.iterate{ 
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.mass{
+    padding-top:15px;
+    margin-left:-10px;
+}

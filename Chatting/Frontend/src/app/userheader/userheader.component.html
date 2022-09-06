@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(49, 195, 49)">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><h5>N</h5></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" [routerLink]="['/profile']"><i class='fa fa-home'></i>&nbsp;Home</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link"  [routerLink]="['/friends']"><i class='fa fa-user-friends'></i>Chats</a>
+          </li> -->
+          <li class="nav-item ">
+            <a class="nav-link"  [routerLink]="['/my-profile']">
+                <i class="fas fa-user"></i> Profile
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" (click)="logoutUser()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </li>
+          
+        </ul>
+        <!-- <form class="d-flex" #search="ngForm" (ngSubmit)="Search()">
+          <input class="form-control me-2" #name="ngModel" id="search" [(ngModel)]="searchname" type="text" name="name"  placeholder="Search People" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit"> <span *ngIf="loading" id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- <div *ngIf="sessionmesssage" class="alert alert-danger" role="alert">{{sessionmesssage}}</div>
+
+   -->
+ 

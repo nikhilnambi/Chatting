@@ -1,0 +1,142 @@
+.container {
+    border: 1px solid whitesmoke;
+    background-color:white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+ 
+  .container img {
+    float: left;
+    max-width: 50px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  small{
+    color:dodgerblue;
+  }
+ 
+  i{
+    padding-top:4px;
+    padding-left:1px;
+    float:right;
+  }
+  button{
+    justify-content:space-evenly;
+    
+  }
+  .button{
+    justify-content: space-between;
+  }
+  #second{
+    padding-right: -4px;
+  }
+  .btn{
+    border-color: lightgreen;
+  }
+  
+ 
+  .containe {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .message{
+    border: 1px greenyellow;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width:fit-content;
+    height:fit-content;
+    max-width:40px;
+    max-height:40px;
+  }
+  
+  /* Darker chat container */
+  .darker {
+    border-color: #ccc;
+    background-color: #ddd;
+  }
+  
+  /* Clear floats */
+  .containe::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Style images */
+  .containe img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  /* Style the right image */
+  .containe img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+  }
+  
+  /* Style time text */
+  .time-right {
+    float: right;
+    color: #aaa;
+  }
+  
+  /* Style time text */
+  .time-left {
+    float: left;
+    color: #999;
+  }
+
+  .mg{
+    max-width:40%;
+    max-height:10%;
+    width:fit-content;
+    height:fit-content;
+    background-color: aliceblue;
+  }
+  .mgbox{
+    max-width:40%;
+    max-height:10%;
+    width:fit-content;
+    height:fit-content;
+    background-color: aliceblue;
+  }
+  
+  .chat-messages-show-container{
+    background: #c3c3c3;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+ }
+ .chat-messages-show-list {
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+ }
+ .chat-messages-create-container{
+    background: #616161;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+ }
+ .chat-messages-create-input {
+    padding: 12px;
+    margin: 29px 30px;
+    flex:2
+ }
+ .chat-messages-create-button {
+    height: 50px;
+    margin: auto 40px;
+    width: 100px;
+ }

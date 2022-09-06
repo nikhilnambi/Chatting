@@ -1,0 +1,53 @@
+<app-userheader></app-userheader>
+<app-profileheader></app-profileheader>
+
+
+  <div class="container main">
+    <div class=" stuck">
+        <div class="row ">
+          <div class="col">
+            <img src="http://localhost:3200/{{gpimg()}}">
+            <div class="textcreator">
+          <h6>{{gpname()}}</h6>
+          <small class="text-muted creator">created by {{creator()}}</small>
+        </div>
+        </div>
+        <div class="col">
+          <button class="btn leave" *ngIf="leftornot!=null" (click)="leavegp()">Leave &nbsp;<i class="fa fa-arrow-right" style="color:lightgreen"></i></button>
+          <button class="btn leave" *ngIf="leftornot==null" (click)="joingp()">Join &nbsp;<i class="fa fa-arrow-right" style="color:lightgreen"></i></button>
+
+        </div>
+        </div>
+    </div>
+       <br>
+    <div *ngFor="let chat of messageArray">
+      <div class="msgto">
+      <div class="row mgbox" *ngIf="username()!=chat.from">
+        <div class="">{{chat.message}}
+        
+        </div>
+        <small>{{chat.time}}</small>
+        <small style="color:rgb(146, 148, 149)">{{chat.from}}</small>
+      </div>
+    </div>
+
+    <div class="msgtox">
+      <div class="row float-end mgbox" *ngIf="username()==chat.from">
+       <div class="">{{chat.message}}
+       </div>
+      <small>{{chat.time}}</small>
+      </div>
+    </div>
+  </div>
+  <p  *ngIf="this.leftornot==null" class="text-muted" style="text-align:center;font-size: smaller;"> You left the group.</p><br>
+  </div>
+    <br><br>
+    <div class="container tox">
+      <form #userchat="ngForm"  (ngSubmit)="sendMsg()">
+      <div class="input">
+      <input type="text" name="name" class="form-control" required  [(ngModel)]="data.text" #name="ngModel">
+      <button type="submit" class="btn" style="background-color:#f8f8f8 ;"><i class="fa fa-arrow-circle-right" style="color: #31C331 ;"></i></button>
+      </div>
+    </form>
+    </div>
+    

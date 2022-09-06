@@ -1,0 +1,46 @@
+
+  
+  .img-cover {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  
+    object-fit: cover;
+    object-position: left;
+  }
+  .two{
+    display: flex;
+    flex-direction: row;
+    justify-content:safe;
+    height:400px;
+  }
+  .texts{
+    padding-left: 25px;
+    display:grid;
+    flex-direction: row;
+    height:30px;
+  }
+  .but{
+    display:grid;
+    flex-direction: row;
+    height:50px;
+  }
+  button{
+    height: fit-content;
+  }
+
+ 
+
+  @media only screen and (max-width: 768px) {
+   
+    .img-cover {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        padding-left: 10px;
+        padding-top:10px;
+      }
+
+  }
+
+
